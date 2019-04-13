@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redis;
 use App\Wx;
+use GuzzleHttp\Client;
 class WxController extends Controller
 {
     //
