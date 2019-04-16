@@ -182,7 +182,8 @@ class WxController extends Controller
                     <CreateTime>'.time().'</CreateTime>
                     <MsgType><![CDATA[text]]></MsgType>
                     <Content><![CDATA[城市名称有误,请输入正确的地区名称！！！]]></Content>
-                </xml>';
+                  </xml>';
+                echo $nr;
                 }
                 
             
