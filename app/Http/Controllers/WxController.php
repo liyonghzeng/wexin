@@ -97,7 +97,7 @@ class WxController extends Controller
             // echo 11;die;
             $url2 = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token='.$this->getAccessToken().'&media_id='.$media_id;
             $response =$client->get(new Uri($url2));
-            dump($response);
+            // dump($response);
             $headers = $response->getHeaders();//获取 相应头 信息
             $file_info  = $headers['Content-disposition'][0];
 
