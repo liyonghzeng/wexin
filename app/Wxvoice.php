@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Wxvoice extends Model
 {
     //
-    protected $table = 'Wxvoice';
+    protected $table = 'wxvoice';
     public $timestamps = false;
     public $primaryKey = 'v_id';
 }
