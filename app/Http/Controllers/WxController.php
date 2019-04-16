@@ -119,7 +119,7 @@ class WxController extends Controller
             ];
             $res = Wximg::insertGetId($u_info);
             if($res){
-                echo '成功';
+                echo 'success';
             }else{
                 echo '失败';
             }
