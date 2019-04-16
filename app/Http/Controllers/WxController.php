@@ -137,7 +137,11 @@ class WxController extends Controller
                 'voice_adress'  => 'wx/voice/'.$file_name,
             ];
             $res = Wxvoice::insertGetId($u_info);
-
+            if($res){
+                echo 'success';
+            }else{
+                echo '失败';
+            }
         }else if($msg_type=='text'){
             $u = $this->getUserInfo($openid);
             $t_Content = $data->Content;  
