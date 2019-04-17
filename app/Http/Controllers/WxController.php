@@ -306,7 +306,7 @@ class WxController extends Controller
     public function send(){
         $user_list = Wx::get()->toArray();
       $openid=  array_column($user_list,'openid');
-      $content = '美丽每一天！！！！';
+      $content = '每一天！！！！';
       $sss=$this->wxgroups($openid,$content);
         echo $sss;
     } 
