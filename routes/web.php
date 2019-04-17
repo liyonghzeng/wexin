@@ -24,3 +24,10 @@ Route::get('/weixin/test','WxController@test');
 //atoken 测试
 Route::get('/weixin/atoken','WxController@atoken');
 
+//群发
+Route::get('/weixin/wxgroups','WxController@wxgroups');
+
+Route::get('/send','WxController@send');
+
+
+

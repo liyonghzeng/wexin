@@ -194,6 +194,9 @@ class WxController extends Controller
             
         }
     }
+
+
+   
     /**
      * 获取微信 AccessToken
      */
@@ -274,4 +277,37 @@ class WxController extends Controller
             echo "创建菜单成功";
         }
     }
+     //群发
+     public function wxgroups($openid_arr,$content){
+
+      
+        // echo $groups;
+        // echo '<hr />';
+     
+        // echo $json_str;
+
+
+
+       $msg = [
+            "touser"=>$openid_arr,
+             "msgtype"=>"text",
+             "text"=>[
+                 'content' => $content
+             ]
+       ];
+       $json_str = json_encode($msg,JSON_UNESCAPED_UNICODE); 
+       $groups='https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token='.$this->getAccessToken();
+       $Client =new Client();
+       $response=$Client->request('POST',$groups,[
+           "body"=>$json_str
+       ]);
+       echo $response->getBody();
+    }
+    public function send(){
+        $user_list = Wx::get()->toArray();
+      $openid=  array_column($user_list,'openid');
+      $content = '美丽每一天！！！！';
+      $sss=$this->wxgroups($openid,$content);
+        echo $sss;
+    } 
 }
