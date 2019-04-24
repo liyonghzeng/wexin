@@ -29,7 +29,7 @@ class WxController extends Controller
 
     public function atoken()
     {
-        echo $this->getAccessToken();
+        echo getAccessToken();
     }
     /**
      * 接收微信事件推送 POST
