@@ -30,7 +30,7 @@ Route::get('/weixin/wxgroups','WxController@wxgroups');
 //测试
 Route::get('/ix','WxController@ix');
 
-
+Route::get('/goods/{id}','GoodsController@goods');//商品详情
 //微信支付
 Route::get('/text','WxPayController@text');
 

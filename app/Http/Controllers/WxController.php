@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redis;
 use App\Wx;
 use App\Wximg;
+use App\Goods;
 use App\Wxvoice;
 use App\Wxcontent;
 use GuzzleHttp\Client;
@@ -95,7 +96,7 @@ class WxController extends Controller
             // echo 111;die;
                 $u = $this->getUserInfo($openid);
 
-               
+
                 
                 //用户信息入库
                 $u_info = [
@@ -209,10 +210,11 @@ class WxController extends Controller
                 }
 
         }else if($t_Content=='最新商品'){
-
+                $name=Goods::where(['goods_id'=>2])->first();
+                $goods_name=$name->goods_name;
                 $sr = "最新商品";
+                $url = "https://1809liyongzheng.comcto.com/goods/$name->goods_id";
 
-                $url = 'baidu.com';
                     $nr='<xml>
                               <ToUserName><![CDATA['.$openid.']]></ToUserName>
                            <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
@@ -222,7 +224,7 @@ class WxController extends Controller
                           <Articles>
                             <item>
                                <Content><![CDATA['.$sr.']]></Content>
-                              <Description><![CDATA[description1]]></Description>
+                              <Description><![CDATA['.$goods_name.']]></Description>
                               <PicUrl><![CDATA[picurl]]></PicUrl>
                               <Url><![CDATA['.$url.']]></Url>
                             </item>
