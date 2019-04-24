@@ -208,7 +208,7 @@ class WxController extends Controller
                             <item>
                                <Content><![CDATA[最新商品]]></Content>
                               <Description><![CDATA['.$goods_name.']]></Description>
-                              <PicUrl><![CDATA[picurl]]></PicUrl>
+                              <PicUrl><![CDATA[https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=633401611,1187473375&fm=26&gp=0.jpg]]></PicUrl>
                               <Url><![CDATA['.$url.']]></Url>
                             </item>
                           </Articles>

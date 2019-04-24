@@ -40,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Helper/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="8" column="23" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="23" />
+            <state relative-caret-position="302">
+              <caret line="36" column="44" lean-forward="true" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -60,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WxController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="208" column="48" selection-start-line="208" selection-start-column="43" selection-end-line="208" selection-end-column="48" />
+            <state relative-caret-position="431">
+              <caret line="209" column="79" lean-forward="true" selection-start-line="209" selection-start-column="79" selection-end-line="209" selection-end-column="79" />
               <folding>
                 <element signature="e#38#66#0#PHP" expanded="true" />
               </folding>
@@ -93,17 +93,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WXBizDataCryptController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
+            <state relative-caret-position="252">
               <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/goods/goods.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="31" column="114" selection-start-line="31" selection-start-column="114" selection-end-line="31" selection-end-column="114" />
+            <state relative-caret-position="304">
+              <caret line="31" column="114" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="114" />
             </state>
           </provider>
         </entry>
@@ -140,8 +140,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/GoodsController.php" />
         <option value="$PROJECT_DIR$/app/Helper/functions.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/WxController.php" />
         <option value="$PROJECT_DIR$/resources/views/goods/goods.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/WxController.php" />
       </list>
     </option>
   </component>
@@ -378,12 +378,12 @@
       <option name="presentableId" value="Default" />
       <updated>1555485284342</updated>
       <workItem from="1555485287537" duration="15429000" />
-      <workItem from="1556066391623" duration="14043000" />
+      <workItem from="1556066391623" duration="14801000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29472000" />
+    <option name="totallyTimeSpent" value="30230000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -505,10 +505,10 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WXBizDataCryptController.php">
+    <entry file="file://$PROJECT_DIR$/app/Helper/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+        <state relative-caret-position="302">
+          <caret line="36" column="44" lean-forward="true" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -519,27 +519,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/goods/goods.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="31" column="114" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WXBizDataCryptController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WxController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="208" column="48" selection-start-line="208" selection-start-column="43" selection-end-line="208" selection-end-column="48" />
+        <state relative-caret-position="431">
+          <caret line="209" column="79" lean-forward="true" selection-start-line="209" selection-start-column="79" selection-end-line="209" selection-end-column="79" />
           <folding>
             <element signature="e#38#66#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helper/functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/goods/goods.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="31" column="114" selection-start-line="31" selection-start-column="114" selection-end-line="31" selection-end-column="114" />
         </state>
       </provider>
     </entry>
