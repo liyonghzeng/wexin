@@ -24,4 +24,23 @@ function getAccessToken()
     }
     return $token;
 }
+function getJsapiTicket()
+{
+    $access_token = getAccessToken();
+    $key = 'wx_jsapi_ticket';
+    $Ticket = Redis::get($key);
+    if ($Ticket) {
+        return $Ticket;
+    } else {
+        $url = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=' . $access_token . '&type=jsapi';
+        $ticket_info = json_decode(file_get_contents($url), true);
+        if (isset($ticket_info['ticket'])) {
+            Redis::set($key, $ticket_info['ticket']);
+            Redis::expire($key, 3600);
+            return $ticket_info['ticket'];
+        } else {
+            return false;
+        }
+    }
+}
         
