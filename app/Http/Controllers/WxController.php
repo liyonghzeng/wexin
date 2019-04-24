@@ -343,14 +343,20 @@ class WxController extends Controller
         $data=json_decode(file_get_contents($url),true);
        $size ="https://api.weixin.qq.com/sns/userinfo?access_token=".$data['access_token']."&openid=".$data['openid']."&lang=zh_CN";
         $user_y=json_decode(file_get_contents($size),true);
-        $where=[
-            "nickname"=>$user_y['$user_y'],
-            "sex"=>$user_y['sex'],
-            "province"=>$user_y['province'],
-            "city"=>$user_y['city'],
-            "country"=>$user_y['country'],
-            "openid"=>$user_y['openid'],
-        ];
-        Shouquan::where($where)->insert();
+        $res=Shouquan::where(['openid'=>$user_y['openid']])->first();
+        if($res>0){
+            echo "亲爱的".$res->nickname."欢迎回来";
+        }else{
+            $where=[
+                "nickname"=>$user_y['nickname'],
+                "sex"=>$user_y['sex'],
+                "province"=>$user_y['province'],
+                "city"=>$user_y['city'],
+                "country"=>$user_y['country'],
+                "openid"=>$user_y['openid'],
+            ];
+            Shouquan::where($where)->insert();
+        }
+
     }
 }
