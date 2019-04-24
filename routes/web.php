@@ -15,6 +15,13 @@ Route::get('/', function () {
     phpinfo();
 });
 
+Route::get('/test/urlencode', function () {
+    echo urlencode($_GET['url']);
+});
+
+
+
+
 Route::get('weixin/ui','WxController@valid');
 //接收微信服务器推送事件
 Route::post('weixin/ui','WxController@wxEvent');
