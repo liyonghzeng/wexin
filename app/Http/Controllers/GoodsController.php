@@ -11,6 +11,6 @@ class GoodsController extends Controller
     public function goods($id)
     {
         $goods=Goods::where(['goods_id'=>$id])->first();
-        view('goods/goods',['goods'=>$goods]);
+        return view('/goods/goods',['goods'=>$goods]);
     }
 }
