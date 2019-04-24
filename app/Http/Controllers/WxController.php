@@ -342,7 +342,7 @@ class WxController extends Controller
         $data=json_decode(file_get_contents($url),true);
         print_r($data);die;
        $size ="https://api.weixin.qq.com/sns/userinfo?access_token=".$data['access_token']."&openid=".$data['openid']."&lang=zh_CN";
-        $user_y=json_decode(file_get_contents($url),true);
+        $user_y=json_decode(file_get_contents($size),true);
         print_r($user_y);
     }
 }
