@@ -22,14 +22,14 @@
         timestamp: "{{$js_config['timestamp']}}", // 必填，生成签名的时间戳
         nonceStr: "{{$js_config['nonceStr']}}", // 必填，生成签名的随机串
         signature: "{{$js_config['signature']}}",// 必填，签名
-        jsApiList: ['chooseImage','uploadImage'] // 必填，需要使用的JS接口列表
+        jsApiList: ['chooseImage','uploadImage','updateAppMessageShareData'] // 必填，需要使用的JS接口列表
     });
     wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
         wx.updateAppMessageShareData({
             title: '最新商品', // 分享标题
             desc: '{{$goods->goods_name}}', // 分享描述
             link: "http://1809liyongzheng.comcto.com/goods/"+"{{$goods->goods_id}}", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: '', // 分享图标
+            imgUrl: 'http://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=%E4%BF%9D%E6%97%B6%E6%8D%B7&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=undefined&hd=undefined&latest=undefined&copyright=undefined&cs=3660498484,1098792735&os=1399308224,4247077296&simid=4179537836,760861667&pn=2&rn=1&di=181475265840&ln=1901&fr=&fmq=1556082291656_R&fm=&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=0&objurl=http%3A%2F%2Fphotocdn.sohu.com%2F20100305%2FImg270601722.jpg&rpstart=0&rpnum=0&adpicid=0&force=undefined', // 分享图标
             success: function (res) {
                 console.log(res);
             }
