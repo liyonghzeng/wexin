@@ -213,8 +213,7 @@ class WxController extends Controller
                 $name=Goods::where(['goods_id'=>2])->first();
                 $goods_name=$name->goods_name;
                 $sr = "最新商品";
-                $url = "https://1809liyongzheng.comcto.com/goods/$name->goods_id";
-
+                $url = "http://1809liyongzheng.comcto.com/goods/$name->goods_id";
                     $nr='<xml>
                               <ToUserName><![CDATA['.$openid.']]></ToUserName>
                            <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
