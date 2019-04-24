@@ -344,6 +344,7 @@ class WxController extends Controller
        $size ="https://api.weixin.qq.com/sns/userinfo?access_token=".$data['access_token']."&openid=".$data['openid']."&lang=zh_CN";
         $user_y=json_decode(file_get_contents($size),true);
         $res=Shouquan::where(['openid'=>$user_y['openid']])->first();
+        dump($res);die;
         if($res>0){
             echo "亲爱的".$res->nickname."欢迎回来";
         }else{
