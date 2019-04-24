@@ -29,7 +29,7 @@ class WxController extends Controller
 
     public function atoken()
     {
-        echo getAccessToken();
+       echo getAccessToken();
     }
     /**
      * 接收微信事件推送 POST
@@ -101,7 +101,7 @@ class WxController extends Controller
             // echo 11;die;
             $media_id = $data->MediaId;
             // echo 11;die;
-            $url2 = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token='.$this->getAccessToken().'&media_id='.$media_id;
+            $url2 = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token='.getAccessToken().'&media_id='.$media_id;
             $response =$client->get(new Uri($url2));
             // dump($response);
             $headers = $response->getHeaders();//获取 相应头 信息
@@ -133,7 +133,7 @@ class WxController extends Controller
         }else if($msg_type=='voice'){
             $u = $this->getUserInfo($openid);
             $media_id = $data->MediaId;
-            $url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token='.$this->getAccessToken().'&media_id='.$media_id;
+            $url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token='.getAccessToken().'&media_id='.$media_id;
             $amr = file_get_contents($url);
             $file_name = time().mt_rand(11111,99999).'.mp3';
             $rs = file_put_contents('wx/voice/'.$file_name,$amr);
@@ -252,7 +252,7 @@ class WxController extends Controller
      */
     public function getUserInfo($openid)
     {
-        $url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$this->getAccessToken().'&openid='.$openid.'&lang=zh_CN';
+        $url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.getAccessToken().'&openid='.$openid.'&lang=zh_CN';
         
         $data = file_get_contents($url);
   
@@ -266,7 +266,7 @@ class WxController extends Controller
     public function createMenu()
     {
         // url
-        $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.$this->getAccessToken();
+        $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.getAccessToken();
         // 接口数据
         $post_arr = [               //注意菜单层级关系
             'button'    => [
@@ -319,7 +319,7 @@ class WxController extends Controller
              ]
        ];
        $json_str = json_encode($msg,JSON_UNESCAPED_UNICODE); 
-       $groups='https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token='.$this->getAccessToken();
+       $groups='https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token='.getAccessToken();
        $Client =new Client();
        $response=$Client->request('POST',$groups,[
            "body"=>$json_str
