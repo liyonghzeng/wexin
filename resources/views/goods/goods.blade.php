@@ -9,6 +9,6 @@
 </head>
 <body>
     商品名称 ----  商品价格 ---- 商品数量
-    {{$goods->goods_name}}----{{$goods_goods_price}}----{{$goods_goods_number}}
+    {{$goods->goods_name}}----{{$goods->goods_price}}----{{$goods->goods_number}}
 </body>
 </html>
