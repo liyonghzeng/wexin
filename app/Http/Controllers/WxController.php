@@ -346,7 +346,7 @@ class WxController extends Controller
         $res=Shouquan::where(['openid'=>$user_y['openid']])->first();
 //        dump($res->nickname);die;
         if($res>0){
-            echo "亲爱的".$res->nickname."欢迎回来";
+            return "亲爱的".$res->nickname."欢迎回来";
         }else{
             $where=[
                 "nickname"=>$user_y['nickname'],
