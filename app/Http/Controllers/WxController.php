@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Redis;
 use App\Wx;
 use App\Wximg;
 use App\Goods;
+use App\Shouquan;
 use App\Wxvoice;
 use App\Wxcontent;
 use GuzzleHttp\Client;
@@ -342,6 +343,14 @@ class WxController extends Controller
         $data=json_decode(file_get_contents($url),true);
        $size ="https://api.weixin.qq.com/sns/userinfo?access_token=".$data['access_token']."&openid=".$data['openid']."&lang=zh_CN";
         $user_y=json_decode(file_get_contents($size),true);
-        print_r($user_y);
+        $where=[
+            "nickname"=>$user_y['$user_y'],
+            "sex"=>$user_y['sex'],
+            "province"=>$user_y['province'],
+            "city"=>$user_y['city'],
+            "country"=>$user_y['country'],
+            "openid"=>$user_y['openid'],
+        ];
+        Shouquan::where($where)->insert();
     }
 }
