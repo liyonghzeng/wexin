@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Redis;
-use Illuminate\Support\Str;
+
 
     /**
      * 获取微信 AccessToken
