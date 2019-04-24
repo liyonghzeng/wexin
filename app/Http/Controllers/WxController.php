@@ -206,7 +206,7 @@ class WxController extends Controller
                           <ArticleCount>1</ArticleCount>
                           <Articles>
                             <item>
-                               <Content><![CDATA['.$sr.']]></Content>
+                               <Content><![CDATA[最新商品]]></Content>
                               <Description><![CDATA['.$goods_name.']]></Description>
                               <PicUrl><![CDATA[picurl]]></PicUrl>
                               <Url><![CDATA['.$url.']]></Url>
