@@ -208,38 +208,29 @@ class WxController extends Controller
                 echo $nr;
                 }
 
-        }//    else if($t_Content=='最新商品'){
-//                $url = 'https://free-api.heweather.net/s6/weather/now?key=HE1904161046411448&location='.$t_Content;
-//                $newUrl =json_decode(file_get_contents($url));
-//                $sr = "最新商品";
-//                if($newUrl['HeWeather6'][0]['status']=='ok'){
-//                    $nr='<xml>
-//                              <ToUserName><![CDATA['.$openid.']]></ToUserName>
-//                           <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
-//                         <CreateTime>'.time().'</CreateTime>
-//                          <MsgType><![CDATA[news]]></MsgType>
-//                          <ArticleCount>5</ArticleCount>
-//                          <Articles>
-//                            <item>
-//                               <Content><![CDATA['.$sr.']]></Content>
-//                              <Description><![CDATA[description1]]></Description>
-//                              <PicUrl><![CDATA[picurl]]></PicUrl>
-//                              <Url><![CDATA[url]]></Url>
-//                            </item>
-//                          </Articles>
-//                        </xml>';
-//                    echo $nr;
-//                }else{
-//                    $nr = '<xml>
-//                    <ToUserName><![CDATA['.$openid.']]></ToUserName>
-//                    <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
-//                    <CreateTime>'.time().'</CreateTime>
-//                    <MsgType><![CDATA[text]]></MsgType>
-//                    <Content><![CDATA[城市名称有误,请输入正确的地区名称！！！]]></Content>
-//                  </xml>';
-//                    echo $nr;
-//                }
-//            }
+        }else if($t_Content=='最新商品'){
+
+                $sr = "最新商品";
+
+                $url = 'baidu.com';
+                    $nr='<xml>
+                              <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                           <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
+                         <CreateTime>'.time().'</CreateTime>
+                          <MsgType><![CDATA[news]]></MsgType>
+                          <ArticleCount>1</ArticleCount>
+                          <Articles>
+                            <item>
+                               <Content><![CDATA['.$sr.']]></Content>
+                              <Description><![CDATA[description1]]></Description>
+                              <PicUrl><![CDATA[picurl]]></PicUrl>
+                              <Url><![CDATA['.$url.']]></Url>
+                            </item>
+                          </Articles>
+                        </xml>';
+                    echo $nr;
+
+            }
         }
     }
 
