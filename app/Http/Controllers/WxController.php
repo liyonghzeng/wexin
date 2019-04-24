@@ -355,7 +355,7 @@ class WxController extends Controller
                 "country"=>$user_y['country'],
                 "openid"=>$user_y['openid'],
             ];
-            Shouquan::where($where)->insertGetId();
+            Shouquan::insert($where);
         }
 
     }
