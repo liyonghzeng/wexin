@@ -24,5 +24,15 @@
         signature: "{{$js_config['signature']}}",// 必填，签名
         jsApiList: ['chooseImage','uploadImage'] // 必填，需要使用的JS接口列表
     });
-
+    wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
+        wx.updateAppMessageShareData({
+            title: '最新商品', // 分享标题
+            desc: '{{$goods->goods_name}}', // 分享描述
+            link: "http://1809liyongzheng.comcto.com/goods/"{{$goods->goods_id}}, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '', // 分享图标
+            success: function (res) {
+                console.log(res);
+            }
+        })
+    });
 </script>
