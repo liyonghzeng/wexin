@@ -25,6 +25,6 @@ class GoodsController extends Controller
             'nonceStr' => $nonceStr,   //随机字符串
             'signature' => $sign,                      //签名
         ];
-        return view('/goods/goods',['goods'=>$goods]);
+        return view('/goods/goods',['goods'=>$goods,'js_config'=>$js_config]);
     }
 }
