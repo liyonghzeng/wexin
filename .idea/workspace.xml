@@ -50,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WxController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
-              <caret line="348" column="19" lean-forward="true" selection-start-line="348" selection-start-column="19" selection-end-line="348" selection-end-column="19" />
+              <caret line="348" column="38" selection-start-line="348" selection-start-column="38" selection-end-line="348" selection-end-column="38" />
               <folding>
                 <element signature="e#38#66#0#PHP" expanded="true" />
               </folding>
@@ -348,12 +348,12 @@
       <option name="presentableId" value="Default" />
       <updated>1555485284342</updated>
       <workItem from="1555485287537" duration="15429000" />
-      <workItem from="1556066391623" duration="27977000" />
+      <workItem from="1556066391623" duration="28084000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43406000" />
+    <option name="totallyTimeSpent" value="43513000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="211" y="111" width="1268" height="688" extended-state="0" />
@@ -513,7 +513,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WxController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="348" column="19" lean-forward="true" selection-start-line="348" selection-start-column="19" selection-end-line="348" selection-end-column="19" />
+          <caret line="348" column="38" selection-start-line="348" selection-start-column="38" selection-end-line="348" selection-end-column="38" />
           <folding>
             <element signature="e#38#66#0#PHP" expanded="true" />
           </folding>
