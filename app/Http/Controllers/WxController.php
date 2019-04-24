@@ -206,7 +206,7 @@ class WxController extends Controller
                           <ArticleCount>1</ArticleCount>
                           <Articles>
                             <item>
-                               <Content><![CDATA['.$sr.']]></Content>
+                               <<Title><![CDATA['.$sr.']></Title>
                               <Description><![CDATA['.$goods_name.']]></Description>
                               <PicUrl><![CDATA[https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=633401611,1187473375&fm=26&gp=0.jpg]]></PicUrl>
                               <Url><![CDATA['.$url.']]></Url>
@@ -214,7 +214,6 @@ class WxController extends Controller
                           </Articles>
                         </xml>';
                     echo $nr;
-
             }
         }
     }
