@@ -198,21 +198,21 @@ class WxController extends Controller
                 $goods_name=$name->goods_name;
                 $sr = "最新商品";
                 $url = "http://1809liyongzheng.comcto.com/goods/$name->goods_id";
-                    $nr="<xml>
-                              <ToUserName><![CDATA[$openid]]></ToUserName>
-                           <FromUserName><![CDATA[$wx_id ]]></FromUserName>
-                         <CreateTime>".time()."</CreateTime>
+                    $nr='<xml>
+                              <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                           <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
+                         <CreateTime>'.time().'</CreateTime>
                           <MsgType><![CDATA[news]]></MsgType>
                           <ArticleCount>1</ArticleCount>
                           <Articles>
                             <item>
-                               <Content><![CDATA[$sr]]></Content>
-                              <Description><![CDATA[$goods_name]]></Description>
+                               <Content><![CDATA['.$sr.']]></Content>
+                              <Description><![CDATA['.$goods_name.']]></Description>
                               <PicUrl><![CDATA[https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=633401611,1187473375&fm=26&gp=0.jpg]]></PicUrl>
-                              <Url><![CDATA[$url]]></Url>
+                              <Url><![CDATA['.$url.']]></Url>
                             </item>
                           </Articles>
-                        </xml>";
+                        </xml>';
                     echo $nr;
 
             }
