@@ -19,6 +19,7 @@ Route::get('/test/urlencode', function () {
     echo urlencode($_GET['url']);
 });
 
+Route::get('/i','WxController@shouquan');//授权
 
 
 

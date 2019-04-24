@@ -333,5 +333,9 @@ class WxController extends Controller
       $content = '【保时捷】，【奔驰】，【宝马】，【法拉利】，【兰博基尼】....';
       $sss=$this->wxgroups($openid,$content);
         echo $sss;
-    } 
+    }
+    //授权
+    public function shouquan(){
+       echo $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".env("WX_APPID")."&redirect_uri=http%3A%2F%2F1809liyongzheng.comcto.com%2Fi&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+    }
 }
