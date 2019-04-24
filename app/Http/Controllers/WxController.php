@@ -347,7 +347,7 @@ class WxController extends Controller
 //        dump($res->nickname);die;
         echo $res->nickname;die;
         if($res>0){
-            echo "亲爱的";print_r($res->nickname)echo"欢迎回来";
+//            echo "亲爱的";print_r($res->nickname)echo"欢迎回来";
         }else{
             $where=[
                 "nickname"=>$user_y['nickname'],
