@@ -337,7 +337,9 @@ class WxController extends Controller
     //授权
     public function shouquan(){
 //        echo $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".env("WX_APPID")."&redirect_uri=http%3A%2F%2F1809liyongzheng.comcto.com%2Fi&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
-       echo  $_GET['code'];
-
+       $code = $_GET['code'];
+       $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".env("WX_APPID")."&secret=".env("WX_APPSECRET")."&code=".$code."&grant_type=authorization_code";
+        $data=json_decode(file_get_contents($url),true);
+        print_r($data);
     }
 }

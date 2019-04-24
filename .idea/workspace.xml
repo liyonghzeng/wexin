@@ -49,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WxController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="341" column="5" lean-forward="true" selection-start-line="341" selection-start-column="5" selection-end-line="341" selection-end-column="5" />
+            <state relative-caret-position="472">
+              <caret line="342" column="17" lean-forward="true" selection-start-line="342" selection-start-column="17" selection-end-line="342" selection-end-column="17" />
               <folding>
                 <element signature="e#38#66#0#PHP" expanded="true" />
               </folding>
@@ -61,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="45" column="8" selection-start-line="45" selection-end-line="45" selection-end-column="8" />
+            <state relative-caret-position="342">
+              <caret line="47" column="12" selection-start-line="47" selection-end-line="47" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -202,8 +202,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="117" />
-    <option name="y" value="187" />
+    <option name="x" value="212" />
+    <option name="y" value="161" />
     <option name="width" value="1585" />
     <option name="height" value="860" />
   </component>
@@ -329,15 +329,15 @@
       <option name="presentableId" value="Default" />
       <updated>1555485284342</updated>
       <workItem from="1555485287537" duration="15429000" />
-      <workItem from="1556066391623" duration="22955000" />
+      <workItem from="1556066391623" duration="23543000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38384000" />
+    <option name="totallyTimeSpent" value="38972000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="94" y="150" width="1268" height="688" extended-state="0" />
+    <frame x="170" y="129" width="1268" height="688" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -470,13 +470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="45" column="8" selection-start-line="45" selection-end-line="45" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
@@ -484,10 +477,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="47" column="12" selection-start-line="47" selection-end-line="47" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WxController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="341" column="5" lean-forward="true" selection-start-line="341" selection-start-column="5" selection-end-line="341" selection-end-column="5" />
+        <state relative-caret-position="472">
+          <caret line="342" column="17" lean-forward="true" selection-start-line="342" selection-start-column="17" selection-end-line="342" selection-end-column="17" />
           <folding>
             <element signature="e#38#66#0#PHP" expanded="true" />
           </folding>
