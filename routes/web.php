@@ -27,7 +27,12 @@ Route::get('/weixin/atoken','WxController@atoken');
 //群发
 Route::get('/weixin/wxgroups','WxController@wxgroups');
 
-Route::get('/send','WxController@send');
+//测试
+Route::get('/ix','WxController@ix');
+
+
+//微信支付
+Route::get('/text','WxPayController@text');
 
 
 

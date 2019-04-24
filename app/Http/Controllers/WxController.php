@@ -17,13 +17,17 @@ class WxController extends Controller
     /**
      * 处理首次接入GET请求
      */
+    public function ix()
+    {
+      
+    }
     public function valid()
     {
         echo $_GET['echostr'];
     }
     public function atoken()
     {
-        echo $this->getAccessToken();
+        echo getAccessToken();
     }
     /**
      * 接收微信事件推送 POST
@@ -185,39 +189,65 @@ class WxController extends Controller
                   </xml>';
                 echo $nr;
                 }
-                
-            
+
+            }else if($t_Content=='最新商品'){
+                $url = 'https://free-api.heweather.net/s6/weather/now?key=HE1904161046411448&location='.$t_Content;
+                $newUrl =json_decode(file_get_contents($url));
+                $sr = "最新商品";
+                if($newUrl['HeWeather6'][0]['status']=='ok'){
+                    $nr='<xml>
+                              <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                           <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
+                         <CreateTime>'.time().'</CreateTime>
+                          <MsgType><![CDATA[news]]></MsgType>
+                          <ArticleCount>5</ArticleCount>
+                          <Articles>
+                            <item>
+                               <Content><![CDATA['.$sr.']]></Content>
+                              <Description><![CDATA[description1]]></Description>
+                              <PicUrl><![CDATA[picurl]]></PicUrl>
+                              <Url><![CDATA[url]]></Url>
+                            </item>
+                          </Articles>
+                        </xml>';
+                    echo $nr;
+                }else{
+                    $nr = '<xml>
+                    <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                    <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
+                    <CreateTime>'.time().'</CreateTime>
+                    <MsgType><![CDATA[text]]></MsgType>
+                    <Content><![CDATA[城市名称有误,请输入正确的地区名称！！！]]></Content>
+                  </xml>';
+                    echo $nr;
+                }
             }
-            // dump($u);
-        
-             
-            
         }
     }
 
 
    
-    /**
-     * 获取微信 AccessToken
-     */
-    public function getAccessToken()
-    {
-        //是否有缓存
-        $key = 'wx_access_token';
-        $token = Redis::get($key);
-        if($token){
-        }else{
-            $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.env('WX_APPID').'&secret='.env('WX_APPSECRET');
-                 // https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
-            $response = file_get_contents($url);
-            $arr = json_decode($response,true);
-            //缓存 access_token
-            Redis::set($key,$arr['access_token']);
-            Redis::expire($key,3600);       //缓存时间 1小时
-            $token = $arr['access_token'];
-        }
-        return $token;
-    }
+    // /** 
+    //  * 获取微信 AccessToken
+    //  */
+    // public function getAccessToken()
+    // {
+    //     //是否有缓存
+    //     $key = 'wx_access_token';
+    //     $token = Redis::get($key);
+    //     if($token){
+    //     }else{
+    //         $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.env('WX_APPID').'&secret='.env('WX_APPSECRET');
+    //              // https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+    //         $response = file_get_contents($url);
+    //         $arr = json_decode($response,true);
+    //         //缓存 access_token
+    //         Redis::set($key,$arr['access_token']);
+    //         Redis::expire($key,3600);       //缓存时间 1小时
+    //         $token = $arr['access_token'];
+    //     }
+    //     return $token;
+    // }
     public function test()
     {
         $access_token = $this->getAccessToken();
@@ -304,9 +334,9 @@ class WxController extends Controller
        echo $response->getBody();
     }
     public function send(){
-        $user_list = Wx::get()->toArray();
+      $user_list = Wx::get()->toArray();
       $openid=  array_column($user_list,'openid');
-      $content = '每一天！！！！';
+      $content = '【保时捷】，【奔驰】，【宝马】，【法拉利】，【兰博基尼】....';
       $sss=$this->wxgroups($openid,$content);
         echo $sss;
     } 
