@@ -155,6 +155,7 @@ class WxController extends Controller
                 'openid' => $u['openid'],
                 'wx_text'  => $t_Content,
             ];
+//            dump($u_info);die;
             $res = Wxcontent::insertGetId($u_info);
             if(strpos($t_Content,'+天气')){
                 // echo 111;
@@ -257,7 +258,7 @@ class WxController extends Controller
         $data = file_get_contents($url);
   
         $u = json_decode($data,true);
-        // dump($u);die;
+//         dump($u);die;
         return $u;
     }
     /**
