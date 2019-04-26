@@ -195,7 +195,7 @@ class WxController extends Controller
                 }
 
         }else if($t_Content=='最新商品'){
-                $name=Goods::where(['goods_id'=>2])->first();
+                $name=Goods::where(['goods_id'=>1])->first();
                 $goods_name=$name->goods_name;
                 $sr = "最新商品";
                 $url = "http://1809liyongzheng.comcto.com/goods/$name->goods_id";

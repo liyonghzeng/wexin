@@ -7,6 +7,7 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
     <!-- Styles -->
     <style>
@@ -44,7 +45,7 @@
         }
 
         .title {
-            font-size: 84px;
+            font-size: 20px;
         }
 
         .links > a {
@@ -66,32 +67,35 @@
 <div class="flex-center position-ref full-height">
 
     <div class="content">
-        <div class="title m-b-md" id="qrcode" >
-            微信立即支付
+        <div class="title m-b-md">
+
+            @foreach($data as $k=>$v)
+                序号 : {{$v->goods_id}}
+                名称：{{$v->goods_name}}>>>>>
+                价格：{{$v->goods_price}}>>>>>
+                <form action="/order/index/{{$v->goods_id}}" method="get">
+                    <input type="submit" value="立即支付">
+                </form>
+
+                <form action="/addBrowse/{{$v->goods_id}}" method="get">
+                    <input type="submit" value="查看商品详情">
+                </form>
+
+                <br />
+            @endforeach
+
         </div>
 
-
+        <div class="links">
+            <a href="https://laravel.com/docs">Docs</a>
+            <a href="https://laracasts.com">Laracasts</a>
+            <a href="https://laravel-news.com">News</a>
+            <a href="https://blog.laravel.com">Blog</a>
+            <a href="https://nova.laravel.com">Nova</a>
+            <a href="https://forge.laravel.com">Forge</a>
+            <a href="https://github.com/laravel/laravel">GitHub</a>
+        </div>
     </div>
 </div>
 </body>
 </html>
-<script src="/js/jquery.js"></script>
-<script src="/js/qrcode.js"></script>
-<script type="text/javascript">
-    new QRCode(document.getElementById("qrcode"), "{{$code_url}}");
-    //ajax轮询，检查订单支付状态
-    setInterval(function(){
-        $.ajax({
-            url : '/order/paystatus?oid=' + "{{$oid}}",
-            type: 'get',
-            dataType:'json',
-            success: function(d){
-                if(d.status==0){
-                    alert("支付成功");
-                    location.href = "/pay/success?oid={{$oid}}";
-                }
-            }
-        });
-    },2000)
-
-</script>

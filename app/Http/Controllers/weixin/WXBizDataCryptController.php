@@ -4,7 +4,7 @@
  *
  * @copyright Copyright (c) 1998-2014 Tencent Inc.
  */
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\weixin;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ErrorCodeController as ErrorCode;
 class WXBizDataCryptController extends Controller

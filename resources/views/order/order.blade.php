@@ -7,6 +7,7 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
     <!-- Styles -->
     <style>
@@ -44,7 +45,7 @@
         }
 
         .title {
-            font-size: 84px;
+            font-size: 15px;
         }
 
         .links > a {
@@ -65,33 +66,29 @@
 <body>
 <div class="flex-center position-ref full-height">
 
+
     <div class="content">
-        <div class="title m-b-md" id="qrcode" >
-            微信立即支付
+        <div class="title m-b-md">
+            序号---------------订单号---------------商品id----------------------商品价钱---购买数量<hr  />
+            @foreach($data as $k=>$v)
+                {{$v->o_id}}-----------{{$v->order_id}}-------{{$v->goods_id}}------{{$v->goods_price}}------{{$v->cart_number}}
+                <form action="/text/{{$v->order_id}}" method="get">
+                    <input type="submit" value="立即付款">
+                </form>
+                <hr  />
+            @endforeach
         </div>
 
-
+        <div class="links">
+            <a href="https://laravel.com/docs">Docs</a>
+            <a href="https://laracasts.com">Laracasts</a>
+            <a href="https://laravel-news.com">News</a>
+            <a href="https://blog.laravel.com">Blog</a>
+            <a href="https://nova.laravel.com">Nova</a>
+            <a href="https://forge.laravel.com">Forge</a>
+            <a href="https://github.com/laravel/laravel">GitHub</a>
+        </div>
     </div>
 </div>
 </body>
 </html>
-<script src="/js/jquery.js"></script>
-<script src="/js/qrcode.js"></script>
-<script type="text/javascript">
-    new QRCode(document.getElementById("qrcode"), "{{$code_url}}");
-    //ajax轮询，检查订单支付状态
-    setInterval(function(){
-        $.ajax({
-            url : '/order/paystatus?oid=' + "{{$oid}}",
-            type: 'get',
-            dataType:'json',
-            success: function(d){
-                if(d.status==0){
-                    alert("支付成功");
-                    location.href = "/pay/success?oid={{$oid}}";
-                }
-            }
-        });
-    },2000)
-
-</script>

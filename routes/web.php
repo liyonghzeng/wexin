@@ -18,6 +18,31 @@ Route::get('/', function () {
 Route::get('/test/urlencode', function () {
     echo urlencode($_GET['url']);
 });
+//商品展示
+Route::get('/goods', 'GoodsController@index');
+
+//详情
+Route::get('/addBrowse/{id}', 'GoodsController@Browse');
+
+//购物车
+Route::get('cart/index/{id}', 'CartController@index');
+
+
+Route::get('cart/list', 'CartController@list');
+
+//订单生成
+//Route::get('/order/paystatus', 'OrderController@payStatus');//
+
+Route::get('order/index/{id}', 'OrderController@index');
+
+Route::get('order/list', 'OrderController@list');
+
+Route::get('/text/{id}', 'weixin\WxPayController@text');//微信支付
+
+Route::post('weixin/pay/notify', 'weixin\WxPayController@notify');//微信支付回调
+
+Route::get('/order/paystatus', 'OrderController@payStatus');//
+
 
 Route::get('/i','WxController@shouquan');//授权
 
@@ -33,6 +58,7 @@ Route::get('/weixin/test','WxController@test');
 //atoken 测试
 Route::get('/weixin/atoken','WxController@atoken');
 
+
 //群发
 Route::get('/weixin/wxgroups','WxController@wxgroups');
 
@@ -45,3 +71,7 @@ Route::get('/text','WxPayController@text');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
