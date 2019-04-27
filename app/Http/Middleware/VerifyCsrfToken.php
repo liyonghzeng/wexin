@@ -20,6 +20,8 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'weixin/ui'
+        'weixin/ui',
+        'admin/imgCun',
+        'admin/dispose'
     ];
 }

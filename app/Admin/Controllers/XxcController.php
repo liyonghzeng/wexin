@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Goods;
+use App\Xxc;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -10,7 +10,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-class GoodsController extends Controller
+class XxcController extends Controller
 {
     use HasResourceActions;
 
@@ -79,13 +79,12 @@ class GoodsController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Goods);
+        $grid = new Grid(new Xxc);
 
-        $grid->goods_id('Goods id');
-        $grid->goods_name('Goods name');
-        $grid->goods_price('Goods price');
-        $grid->goods_number('Goods number');
-        $grid->browse('Browse');
+        $grid->xc_id('Xc id');
+        $grid->type('Type');
+        $grid->media_id('Media id');
+        $grid->created_at('Created at');
 
         return $grid;
     }
@@ -98,13 +97,12 @@ class GoodsController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(Goods::findOrFail($id));
+        $show = new Show(Xxc::findOrFail($id));
 
-        $show->goods_id('Goods id');
-        $show->goods_name('Goods name');
-        $show->goods_price('Goods price');
-        $show->goods_number('Goods number');
-        $show->browse('Browse');
+        $show->xc_id('Xc id');
+        $show->type('Type');
+        $show->media_id('Media id');
+        $show->created_at('Created at');
 
         return $show;
     }
@@ -116,12 +114,10 @@ class GoodsController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Goods);
+        $form = new Form(new Xxc);
 
-        $form->text('goods_name', 'Goods name');
-        $form->number('goods_price', 'Goods price');
-        $form->number('goods_number', 'Goods number');
-        $form->number('browse', 'Browse');
+        $form->number('type', 'Type');
+        $form->text('media_id', 'Media id');
 
         return $form;
     }
