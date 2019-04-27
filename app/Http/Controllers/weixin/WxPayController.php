@@ -22,7 +22,7 @@ class WxPayController extends Controller
      */
     public function text($id)
     {
-        echo $id;
+//        echo $id;
         $u_name=Auth::id();
         $data=Order::where(['order_id'=>$id,'u_name'=>$u_name])->get();
         if($data){ //判断订单号是否存在
@@ -71,12 +71,12 @@ class WxPayController extends Controller
 //        		echo 'result_code: '.$data->result_code;echo '<br>';
 //        		echo 'prepay_id: '.$data->prepay_id;echo '<br>';
 //        		echo 'trade_type: '.$data->trade_type;echo '<br>';
-//                echo 'code_url: '.$data->code_url;echo '<br>';
+                echo 'code_url: '.$data->code_url;echo '<br>';
         $data = [
             'code_url' => $data->code_url,
-            'oid'       => $id,
+            'o_id'       => $id,
         ];
-//                echo 111;
+
         return view('wx/wxzf', $data);
     }
 

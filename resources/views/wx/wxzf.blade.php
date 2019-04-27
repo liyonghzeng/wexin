@@ -81,13 +81,13 @@
     //ajax轮询，检查订单支付状态
     setInterval(function(){
         $.ajax({
-            url : '/order/paystatus?oid=' + "{{$oid}}",
+            url : '/order/paystatus?oid=' + "{{$o_id}}",
             type: 'get',
             dataType:'json',
             success: function(d){
                 if(d.status==0){
                     alert("支付成功");
-                    location.href = "/pay/success?oid={{$oid}}";
+                    location.href = "/pay/success?oid={{$o_id}}";
                 }
             }
         });
