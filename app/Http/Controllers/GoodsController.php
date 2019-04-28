@@ -48,6 +48,8 @@ class GoodsController extends Controller
     }
     public function Browse($id)
     {
+//        print_r($_SERVER);
+
 //       $res = Goods::where(['goods_id'=>$id])->first();
 //        $data=$res->browse+1;
 //        Goods::where(['goods_id'=>$id])->update(['browse'=>$data]);
@@ -68,8 +70,9 @@ class GoodsController extends Controller
 //        print_r($is);
 //        $iii= Redis::zRange($goosranking,0,100);
 //       print_r($iii);
-        return view('goods/browse',["res"=>$res, 'data'=>$data]);
+        $server=$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/goods/browse/'.$id;
 
+        return view('goods/browse',["res"=>$res, 'data'=>$data,'server'=>$server]);
 
     }
 }

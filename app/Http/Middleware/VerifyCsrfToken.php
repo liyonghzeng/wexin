@@ -22,6 +22,7 @@ class VerifyCsrfToken extends Middleware
         //
         'weixin/ui',
         'admin/imgCun',
-        'admin/dispose'
+        'admin/dispose',
+        "/tmp"
     ];
 }

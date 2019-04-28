@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Encore\Admin\Layout\Content;
 use Illuminate\Support\Facades\Redis;
 use \GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Uri;
 use App\Xxc;
 use Illuminate\Support\Str;
 
@@ -50,6 +51,13 @@ class XcController extends Controller
                     ];
                     $res=xxc::insert($where);
                     if($res){
+//                        $urll="https://api.weixin.qq.com/cgi-bin/media/get?access_token=".getAccessToken()."&media_id=".$json['media_id'];
+//                        $response =$client->get(new Uri($urll));
+//                        $headers = $response->getHeaders();//获取 相应头 信息
+//                        $file_info  = $headers['Content-disposition'][0];
+//                        $file_name = rtrim(substr($file_info,-69),'"');
+//                        echo $file_name;
+
                         header('refresh:3;url=/admin/xxc');
                         echo '上传成功';
                     }
@@ -58,4 +66,5 @@ class XcController extends Controller
 
 
     }
+ 
 }

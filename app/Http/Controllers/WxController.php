@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redis;
 use App\Wx;
+use App\Tmp;
 use App\Wximg;
 use App\Goods;
 use App\Shouquan;
@@ -11,6 +12,7 @@ use App\Wxvoice;
 use App\Wxcontent;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Uri;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class WxController extends Controller
@@ -63,39 +65,101 @@ class WxController extends Controller
         // dump($msg_type);die;
         // echo $event;die;        //事件类型
         if($event=='subscribe'){            //扫码关注事件
-            //根据openid判断用户是否已存在
-            $local_user = Wx::where(['openid'=>$openid])->first();
-        //    dump($local_user);die;
-            if($local_user){ 
-                // echo 11;      
-                    // echo $local_user['nickname'];die;
-                echo '<xml>
+
+             if($msg_type=='event'){
+                     $u = $this->getUserInfo($openid);
+                     $whss=[
+                         'openid'=>$u['openid']
+                     ];
+                     $iss=Tmp::where($whss)->first();
+                     if($iss){
+                             $name=Goods::where(['goods_id'=>1])->first();
+                             $goods_name=$name->goods_name;
+                             $sr = "欢迎回来.请继续观看商品";
+                             $url = "http://1809liyongzheng.comcto.com/goods/$name->goods_id";
+                             $nr='<xml>
+                                  <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                               <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
+                             <CreateTime>'.time().'</CreateTime>
+                              <MsgType><![CDATA[news]]></MsgType>
+                              <ArticleCount>1</ArticleCount>
+                              <Articles>
+                                <item>
+                                     <Title><![CDATA['.$sr.']]></Title>
+                                  <Description><![CDATA['.$goods_name.']]></Description>
+                                  <PicUrl><![CDATA[https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=633401611,1187473375&fm=26&gp=0.jpg]]></PicUrl>
+                                  <Url><![CDATA['.$url.']]></Url>
+                                </item>
+                              </Articles>
+                            </xml>';
+                             echo $nr;
+
+                    }else{
+                         $where=[
+                             'openid'=>$u['openid'],
+                             'CreateTime'=>time(),
+                             "EventKey"=>$u['qr_scene']
+                         ];
+
+                         $res=Tmp::insert($where);
+                         if($res){
+                             $name=Goods::where(['goods_id'=>1])->first();
+                             $goods_name=$name->goods_name;
+                             $sr = "你可能喜欢的";
+                             $url = "http://1809liyongzheng.comcto.com/goods/$name->goods_id";
+                             $nr='<xml>
+                                  <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                               <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
+                             <CreateTime>'.time().'</CreateTime>
+                              <MsgType><![CDATA[news]]></MsgType>
+                              <ArticleCount>1</ArticleCount>
+                              <Articles>
+                                <item>
+                                     <Title><![CDATA['.$sr.']]></Title>
+                                  <Description><![CDATA['.$goods_name.']]></Description>
+                                  <PicUrl><![CDATA[https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=633401611,1187473375&fm=26&gp=0.jpg]]></PicUrl>
+                                  <Url><![CDATA['.$url.']]></Url>
+                                </item>
+                              </Articles>
+                            </xml>';
+                             echo $nr;
+                         }
+                     }
+                }else{
+                 $local_user = Wx::where(['openid'=>$openid])->first();
+                 //    dump($local_user);die;
+                 if($local_user){
+                     // echo 11;
+                     // echo $local_user['nickname'];die;
+                     echo '<xml>
                         <ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName>
                         <![CDATA['.$wx_id.']]></FromUserName><CreateTime>'.time().'
                         </CreateTime><MsgType><![CDATA[text]]></MsgType><Content>
                         <![CDATA['. '欢迎回来 '. $local_user['nickname'] .']]></Content>
                     </xml>';
-            }else{          //用户首次关注
-                //获取用户信息
-            // echo 111;die;
-                $u = $this->getUserInfo($openid);
+                 }else{          //用户首次关注
+                     //获取用户信息
+                     // echo 111;die;
+                     $u = $this->getUserInfo($openid);
 
 
-                
-                //用户信息入库
-                $u_info = [
-                    'openid' => $u['openid'],
-                    'nickname'  => $u['nickname'],
-                    'sex'  => $u['sex'],
-                    'headimgurl'  => $u['headimgurl'],
-                ];
-                $id = Wx::insertGetId($u_info);
-                echo '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName>
+
+                     //用户信息入库
+                     $u_info = [
+                         'openid' => $u['openid'],
+                         'nickname'  => $u['nickname'],
+                         'sex'  => $u['sex'],
+                         'headimgurl'  => $u['headimgurl'],
+                     ];
+                     $id = Wx::insertGetId($u_info);
+                     echo '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName>
                            <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
                            <CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]>
                            </MsgType><Content><![CDATA['. '欢迎关注 '. $u['nickname'] .']]></Content>
                       </xml>';
-            }
+                 }
+             }
+
         }else if($msg_type=='image'){//图片
            
            
@@ -104,7 +168,7 @@ class WxController extends Controller
             // echo 11;die;
             $url2 = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token='.getAccessToken().'&media_id='.$media_id;
             $response =$client->get(new Uri($url2));
-            // dump($response);
+
             $headers = $response->getHeaders();//获取 相应头 信息
             $file_info  = $headers['Content-disposition'][0];
 
@@ -358,6 +422,31 @@ class WxController extends Controller
             ];
             Shouquan::insert($where);
         }
+
+    }
+    public function tmp()
+    {
+        $url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".getAccessToken();
+//        echo $url;die;
+        $msg =[
+                "expire_seconds"=>604800,
+                "action_name"=>'QR_SCENE',
+                "action_info"=>[
+                    'scene'=>['scene_id'=>888],
+                ]
+
+        ];
+        $data=json_encode($msg,JSON_UNESCAPED_UNICODE);
+        $client = new Client;
+        $response= $client->request("POST",$url,[
+            "body"=>$data
+        ]);
+
+        $obj= $response->getBody();
+        $arr = json_decode($obj,true);
+
+        $mm='https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket='.$arr['ticket'];
+       header("refresh:1;url=$mm");
 
     }
 }
