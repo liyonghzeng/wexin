@@ -70,8 +70,7 @@ class GoodsController extends Controller
 //        print_r($is);
 //        $iii= Redis::zRange($goosranking,0,100);
 //       print_r($iii);
-        $server=$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/goods/browse/'.$id;
-
+        $server=$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
         return view('goods/browse',["res"=>$res, 'data'=>$data,'server'=>$server]);
 
     }

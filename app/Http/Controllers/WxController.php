@@ -142,8 +142,6 @@ class WxController extends Controller
                      // echo 111;die;
                      $u = $this->getUserInfo($openid);
 
-
-
                      //用户信息入库
                      $u_info = [
                          'openid' => $u['openid'],
