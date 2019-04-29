@@ -364,7 +364,7 @@ class WxController extends Controller
     {
         // url
         $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.getAccessToken();
-        $server=$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/sq';
+        $server=$_SERVER['REQUEST_SCHEME'].'://1809liyongzheng.comcto.com/sq';
 //        echo $server;die;
         // 接口数据
         $post_arr = [               //注意菜单层级关系
