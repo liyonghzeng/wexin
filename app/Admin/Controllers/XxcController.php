@@ -115,7 +115,6 @@ class XxcController extends Controller
     protected function form()
     {
         $form = new Form(new Xxc);
-
         $form->number('type', 'Type');
         $form->text('media_id', 'Media id');
 

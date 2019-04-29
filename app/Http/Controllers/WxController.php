@@ -125,6 +125,17 @@ class WxController extends Controller
                              echo $nr;
                          }
                      }
+//                     if($event=='CLICK'){
+//                         $xml='<xml>
+//                            <ToUserName><![CDATA[.$openid.]]></ToUserName>
+//                            <FromUserName><![CDATA[.$wx_id .]]></FromUserName>
+//                            <CreateTime>'.time().'</CreateTime>
+//                            <MsgType><![CDATA[event]]></MsgType>
+//                            <Event><![CDATA[VIEW]]></Event>
+//                            <EventKey><![CDATA[/i]]></EventKey>
+//                            <MenuId>MENUID</MenuId>
+//                         </xml>';
+//                     }
                 }else{
                  $local_user = Wx::where(['openid'=>$openid])->first();
                  //    dump($local_user);die;
@@ -353,19 +364,23 @@ class WxController extends Controller
     {
         // url
         $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.getAccessToken();
+        $server=$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/sq';
+//        echo $server;die;
         // 接口数据
         $post_arr = [               //注意菜单层级关系
             'button'    => [
                 [
-                    'type'  => 'click',
-                    'name'  => '睡觉',
-                    'key'   => 'key_menu_001'
+                    'type'  => 'view',
+                    'name'  => '最新福利',
+                    'key'   => 'key_menu_001',
+                    'url'=>$server
+//                    https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4ed0983f28f62b51&redirect_uri=http%3A%2F%2F1809.com%2Fi&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect
                 ],
-                [
-                    'type'  => 'click',
-                    'name'  => '看电影',
-                    'key'   => 'key_menu_002'
-                ],
+//                [
+//                    'type'  => 'click',
+//                    'name'  => '看电影',
+//                    'key'   => 'key_menu_002'
+//                ],
             ]
         ];
         $json_str = json_encode($post_arr,JSON_UNESCAPED_UNICODE);  //处理中文编码
@@ -419,6 +434,12 @@ class WxController extends Controller
       $sss=$this->wxgroups($openid,$content);
         echo $sss;
     }
+    public function xq()
+    {
+        header("reffresh:3;url=https://open.weixin.qq.com/connect/oauth2/authorize?appid=".env("WX_APPID")."&redirect_uri=http%3A%2F%2F1809liyongzheng.comcto.com%2Fi&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
+            echo '正在前往最新活动现场';
+
+    }
     //授权
     public function shouquan(){
 //        echo $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".env("WX_APPID")."&redirect_uri=http%3A%2F%2F1809liyongzheng.comcto.com%2Fi&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
@@ -442,7 +463,8 @@ class WxController extends Controller
             ];
             Shouquan::insert($where);
         }
-
+        header("reffresh:3;url=https://open.weixin.qq.com/connect/oauth2/authorize?appid=".env("WX_APPID")."&redirect_uri=http%3A%2F%2F1809liyongzheng.comcto.com%2Fi&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
+        echo '正在前往最新活动现场';
     }
     public function tmp()
     {

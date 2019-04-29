@@ -45,6 +45,8 @@ Route::get('/order/paystatus', 'OrderController@payStatus');//
 
 
 Route::get('/i','WxController@shouquan');//授权
+Route::get('/sq','WxController@sq');//授权
+
 
 
 

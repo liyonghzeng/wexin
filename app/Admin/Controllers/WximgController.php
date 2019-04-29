@@ -83,7 +83,7 @@ class WximgController extends Controller
 
         $grid->img_id('Img id');
         $grid->openid('Openid');
-        $grid->img_adress('Img adress');
+        $grid->img_adress('Img adress')->image();
 
         return $grid;
     }
@@ -115,8 +115,7 @@ class WximgController extends Controller
         $form = new Form(new Wximg);
 
         $form->text('openid', 'Openid');
-        $form->text('img_adress', 'Img adress');
-
+        $form->image('img_adress', 'Img adress');
         return $form;
     }
 }

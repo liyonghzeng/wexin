@@ -12,9 +12,9 @@ function getAccessToken()
     $key = 'wx_access_token';
     $token = Redis::get($key);
     if(!$token){
-        $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.env('WX_APPID').'&secret='.env('WX_APPSECRET');
+        $urlcs = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.env('WX_APPID').'&secret='.env('WX_APPSECRET');
         // https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
-        $response = file_get_contents($url);
+        $response = file_get_contents($urlcs);
         $arr = json_decode($response,true);
         //缓存 access_token
         Redis::set($key,$arr['access_token']);
