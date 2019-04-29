@@ -86,7 +86,7 @@
             </table>
             二维码
             <div class="title m-b-md" id="qrcode" >
-                微信立即支付
+                扫码即可立即关注此商品动态
             </div>
         </div>
 
