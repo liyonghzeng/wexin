@@ -48,7 +48,6 @@ class GoodsController extends Controller
         $timestamp = time();
         $jsapi_ticket = getJsapiTicket();
         $current_url = $_SERVER['REQUEST_SCHEME'].'://' . $_SERVER['HTTP_HOST'] .$_SERVER['REQUEST_URI'];
-        echo $current_url;die;
         $string1  =   "jsapi_ticket=$jsapi_ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$current_url";
         $sign = sha1($string1);
         $js_config = [
