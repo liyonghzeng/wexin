@@ -49,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WxController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="436" column="21" selection-start-line="436" selection-start-column="21" selection-end-line="436" selection-end-column="21" />
+            <state relative-caret-position="224">
+              <caret line="438" column="19" lean-forward="true" selection-start-line="438" selection-start-column="19" selection-end-line="438" selection-end-column="19" />
               <folding>
                 <element signature="e#38#66#0#PHP" expanded="true" />
               </folding>
@@ -301,8 +301,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="430" />
-    <option name="y" value="60" />
+    <option name="x" value="232" />
+    <option name="y" value="66" />
     <option name="width" value="1585" />
     <option name="height" value="1078" />
   </component>
@@ -484,20 +484,20 @@
       <workItem from="1556342664824" duration="10948000" />
       <workItem from="1556355980950" duration="1190000" />
       <workItem from="1556411581552" duration="25128000" />
-      <workItem from="1556498017469" duration="13411000" />
+      <workItem from="1556498017469" duration="13485000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142101000" />
+    <option name="totallyTimeSpent" value="142175000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="344" y="48" width="1268" height="862" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.2599681" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.21223958" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -860,8 +860,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WxController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="436" column="21" selection-start-line="436" selection-start-column="21" selection-end-line="436" selection-end-column="21" />
+        <state relative-caret-position="224">
+          <caret line="438" column="19" lean-forward="true" selection-start-line="438" selection-start-column="19" selection-end-line="438" selection-end-column="19" />
           <folding>
             <element signature="e#38#66#0#PHP" expanded="true" />
           </folding>
