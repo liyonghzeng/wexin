@@ -463,7 +463,8 @@ class WxController extends Controller
             ];
             Shouquan::insert($where);
         }
-        header("reffresh:3;url=https://open.weixin.qq.com/connect/oauth2/authorize?appid=".env("WX_APPID")."&redirect_uri=http%3A%2F%2F1809liyongzheng.comcto.com%2Fi&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
+        $server=$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/goods';
+        header("refresh:3;url=".$server);
         echo '正在前往最新活动现场';
     }
     public function tmp()
