@@ -278,6 +278,28 @@ class WxController extends Controller
                         </xml>';
                     echo $nr;
 
+            }else{
+                $ccc=rand(1,7);
+                $name=Goods::where(['goods_id'=>$ccc])->first();
+                $goods_name=$name->goods_name;
+                $sr = "随机商品";
+                $url = "http://1809liyongzheng.comcto.com/goods/$name->goods_id";
+                $nr='<xml>
+                              <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                           <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
+                         <CreateTime>'.time().'</CreateTime>
+                          <MsgType><![CDATA[news]]></MsgType>
+                          <ArticleCount>1</ArticleCount>
+                          <Articles>
+                            <item>
+                                 <Title><![CDATA['.$sr.']]></Title>
+                              <Description><![CDATA['.$goods_name.']]></Description>
+                              <PicUrl><![CDATA[https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=633401611,1187473375&fm=26&gp=0.jpg]]></PicUrl>
+                              <Url><![CDATA['.$url.']]></Url>
+                            </item>
+                          </Articles>
+                        </xml>';
+                echo $nr;
             }
         }
     }
