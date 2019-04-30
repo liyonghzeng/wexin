@@ -35,6 +35,16 @@ class WxController extends Controller
     {
        echo getAccessToken();
     }
+    //通过redis 定时计划
+    public function swx()
+    {
+        $jf=Redis::get("goods_name_ss");
+        $sss=json_decode($jf);
+        $where =[
+            'ss' => $sss['goods_name']
+        ];
+        $data= Goods::update($sss,$where);
+        }
     /**
      * 接收微信事件推送 POST
      */
@@ -149,12 +159,9 @@ class WxController extends Controller
                         </CreateTime><MsgType><![CDATA[text]]></MsgType><Content>
                         <![CDATA['. '欢迎回来 '. $local_user['nickname'] .']]></Content>
                     </xml>';
-                 }else{          //用户首次关注
-                     //获取用户信息
+                 }else{
                      // echo 111;die;
                      $u = $this->getUserInfo($openid);
-
-                     //用户信息入库
                      $u_info = [
                          'openid' => $u['openid'],
                          'nickname'  => $u['nickname'],
@@ -165,7 +172,7 @@ class WxController extends Controller
                      echo '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName>
                            <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
                            <CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]>
-                           </MsgType><Content><![CDATA['. '欢迎关注 '. $u['nickname'] .']]></Content>
+                           </MsgType><Content><![CDATA['. '请输入商品名字字样 '. $u['nickname'] .']]></Content>
                       </xml>';
                  }
 
@@ -291,12 +298,43 @@ class WxController extends Controller
                     echo $nr;
 
             }else{
-                $ccc=rand(1,7);
-                $name=Goods::where(['goods_id'=>$ccc])->first();
-                $goods_name=$name->goods_name;
-                $sr = "随机商品";
-                $url = "http://1809liyongzheng.comcto.com/goods/$name->goods_id";
-                $nr='<xml>
+//                $ccc=rand(1,7);
+//                $name=Goods::where(['goods_id'=>$ccc])->first();
+//                $goods_name=$name->goods_name;
+//                $sr = "随机商品";
+//                $url = "http://1809liyongzheng.comcto.com/goods/$name->goods_id";
+//                $nr='<xml>
+//                              <ToUserName><![CDATA['.$openid.']]></ToUserName>
+//                           <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
+//                         <CreateTime>'.time().'</CreateTime>
+//                          <MsgType><![CDATA[news]]></MsgType>
+//                          <ArticleCount>1</ArticleCount>
+//                          <Articles>
+//                            <item>
+//                                 <Title><![CDATA['.$sr.']]></Title>
+//                              <Description><![CDATA['.$goods_name.']]></Description>
+//                              <PicUrl><![CDATA[https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=633401611,1187473375&fm=26&gp=0.jpg]]></PicUrl>
+//                              <Url><![CDATA['.$url.']]></Url>
+//                            </item>
+//                          </Articles>
+//                        </xml>';
+//                echo $nr;
+                $ksc = 'goods_name_ss';
+                $cont=[
+                    'goods_name'=>$t_Content,
+                          'ss'  =>$openid
+                ];
+                $rnv=json_encode($cont);
+                Redis::set($ksc,$rnv);
+                $where=[
+                     'goods_name'=>$t_Content
+                ];
+               $jg= Goods::where($where)->first();
+                if($jg){
+                $sr = "商品";
+                $url = "http://1809liyongzheng.comcto.com/goods/$jg->goods_id";
+                $goods_name=$jg->goods_name;
+                    $nr='<xml>
                               <ToUserName><![CDATA['.$openid.']]></ToUserName>
                            <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
                          <CreateTime>'.time().'</CreateTime>
@@ -312,6 +350,7 @@ class WxController extends Controller
                           </Articles>
                         </xml>';
                 echo $nr;
+                }
             }
         }
     }
