@@ -66,33 +66,6 @@ class WxController extends Controller
         // dump($msg_type);die;
         // echo $event;die;        //事件类型
         if($event=='subscribe'){            //扫码关注事件
-
-            $u = $this->$this->getUserInfo($openid);
-            $hss = [
-                'openid'=> $u['openid']
-            ];
-           $ddd= Wx::where($hss)->first();
-           if($ddd){
-               echo '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName>
-                           <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
-                           <CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]>
-                           </MsgType><Content><![CDATA['. '欢迎回来 '. $u['nickname'] .']]></Content>
-                      </xml>';
-           }else{
-               $u_info = [
-                   'openid' => $u['openid'],
-                   'nickname'  => $u['nickname'],
-                   'sex'  => $u['sex'],
-                   'headimgurl'  => $u['headimgurl'],
-               ];
-               $id = Wx::insertGetId($u_info);
-               echo '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName>
-                           <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
-                           <CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]>
-                           </MsgType><Content><![CDATA['. '欢迎关注 '. $u['nickname'] .']]></Content>
-                      </xml>';
-           }
-
 //             if($msg_type=='event'){
 //                     $u = $this->getUserInfo($openid);
 //                     $whss=[
@@ -164,37 +137,38 @@ class WxController extends Controller
 ////                         </xml>';
 ////                     }
 //                }else{
-//                 $local_user = Wx::where(['openid'=>$openid])->first();
-//                 //    dump($local_user);die;
-//                 if($local_user){
-//                     // echo 11;
-//                     // echo $local_user['nickname'];die;
-//                     echo '<xml>
-//                        <ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName>
-//                        <![CDATA['.$wx_id.']]></FromUserName><CreateTime>'.time().'
-//                        </CreateTime><MsgType><![CDATA[text]]></MsgType><Content>
-//                        <![CDATA['. '欢迎回来 '. $local_user['nickname'] .']]></Content>
-//                    </xml>';
-//                 }else{          //用户首次关注
-//                     //获取用户信息
-//                     // echo 111;die;
-//                     $u = $this->getUserInfo($openid);
-//
-//                     //用户信息入库
-//                     $u_info = [
-//                         'openid' => $u['openid'],
-//                         'nickname'  => $u['nickname'],
-//                         'sex'  => $u['sex'],
-//                         'headimgurl'  => $u['headimgurl'],
-//                     ];
-//                     $id = Wx::insertGetId($u_info);
-//                     echo '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName>
-//                           <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
-//                           <CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]>
-//                           </MsgType><Content><![CDATA['. '欢迎关注 '. $u['nickname'] .']]></Content>
-//                      </xml>';
-//                 }
-//             }
+
+                 $local_user = Wx::where(['openid'=>$openid])->first();
+                 //    dump($local_user);die;
+                 if($local_user){
+                     // echo 11;
+                     // echo $local_user['nickname'];die;
+                     echo '<xml>
+                        <ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName>
+                        <![CDATA['.$wx_id.']]></FromUserName><CreateTime>'.time().'
+                        </CreateTime><MsgType><![CDATA[text]]></MsgType><Content>
+                        <![CDATA['. '欢迎回来 '. $local_user['nickname'] .']]></Content>
+                    </xml>';
+                 }else{          //用户首次关注
+                     //获取用户信息
+                     // echo 111;die;
+                     $u = $this->getUserInfo($openid);
+
+                     //用户信息入库
+                     $u_info = [
+                         'openid' => $u['openid'],
+                         'nickname'  => $u['nickname'],
+                         'sex'  => $u['sex'],
+                         'headimgurl'  => $u['headimgurl'],
+                     ];
+                     $id = Wx::insertGetId($u_info);
+                     echo '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName>
+                           <FromUserName><![CDATA['.$wx_id.']]></FromUserName>
+                           <CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]>
+                           </MsgType><Content><![CDATA['. '欢迎关注 '. $u['nickname'] .']]></Content>
+                      </xml>';
+                 }
+
 
         }else if($msg_type=='image'){//图片
            
