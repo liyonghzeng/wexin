@@ -40,6 +40,7 @@ class WxController extends Controller
     public function swx()
     {
         $jf=Redis::get("goods_name_ss");
+        echo $jf;
         $data= Ss::insert($jf);
     }
     /**
@@ -342,6 +343,15 @@ class WxController extends Controller
                           </Articles>
                         </xml>';
                 echo $nr;
+                }else{
+                    $nr = '<xml>
+                    <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                    <FromUserName><![CDATA['.$wx_id .']]></FromUserName>
+                    <CreateTime>'.time().'</CreateTime>
+                    <MsgType><![CDATA[text]]></MsgType>
+                    <Content><![CDATA[稍后再来]]></Content>
+                  </xml>';
+                    echo $nr;
                 }
             }
         }
