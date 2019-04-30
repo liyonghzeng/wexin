@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redis;
 use App\Wx;
 use App\Qd;
+use App\Ss;
 use App\Tmp;
 use App\Wximg;
 use App\Goods;
@@ -39,12 +40,8 @@ class WxController extends Controller
     public function swx()
     {
         $jf=Redis::get("goods_name_ss");
-        $sss=json_decode($jf);
-        $where =[
-            'ss' => $sss['goods_name']
-        ];
-        $data= Goods::update($sss,$where);
-        }
+        $data= Ss::insert($jf);
+    }
     /**
      * 接收微信事件推送 POST
      */
@@ -320,12 +317,7 @@ class WxController extends Controller
 //                        </xml>';
 //                echo $nr;
                 $ksc = 'goods_name_ss';
-                $cont=[
-                    'goods_name'=>$t_Content,
-                          'ss'  =>$openid
-                ];
-                $rnv=json_encode($cont);
-                Redis::set($ksc,$rnv);
+                Redis::set($ksc,$t_Content);
                 $where=[
                      'goods_name'=>$t_Content
                 ];
