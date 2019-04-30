@@ -49,8 +49,14 @@ Route::get('/sq','WxController@sq');//授权
 
 
 
+//签到
+Route::get('/xa','WxController@xa');
+
+Route::get('/aa','WxController@aa');
+
 
 Route::get('weixin/ui','WxController@valid');
+
 //接收微信服务器推送事件
 Route::post('weixin/ui','WxController@wxEvent');
 
